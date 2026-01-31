@@ -1,505 +1,1109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
+    <base target="_self">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chaos Launcher - Professional Gaming Optimizer</title>
+    <title>Optimize PC - تحسين أداء الكمبيوتر والألعاب</title>
+    <meta name="description" content="تطبيق Optimize PC يحسن أداء جهاز الكمبيوتر، يخفف نظام الويندوز للأجهزة الضعيفة، ويركز على تحسين تجربة الألعاب">
+    <meta name="author" content="جهاد محمود راغب القيسي">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Payment Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563eb",
+                        secondary: "#1e40af",
+                        accent: "#3b82f6",
+                        dark: "#1e293b",
+                        light: "#f8fafc",
+                        visa: "#1a1f71",
+                        mastercard: "#eb001b",
+                        paypal: "#003087",
+                        dinar: "#00a8e8"
+                    },
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0a0e27;
-            color: #e0e0e0;
-            line-height: 1.6;
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
         }
-
-        /* Navigation */
-        nav {
-            background: rgba(15, 20, 40, 0.95);
-            padding: 1rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+        
+        .payment-gradient {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, #8a2be2, #ff1493);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        nav a {
-            color: #e0e0e0;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #8a2be2;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(25, 0, 51, 0.8) 100%);
-            padding: 150px 2rem 100px;
-            text-align: center;
-            margin-top: 60px;
-            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #8a2be2, #ff1493);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInDown 0.8s ease;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #b0b0b0;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .cta-button {
-            background: linear-gradient(135deg, #8a2be2, #6a0dad);
-            color: white;
-            padding: 15px 40px;
-            font-size: 1.1rem;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
-            animation: fadeInUp 0.8s ease 0.4s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
-        }
-
-        /* Features Section */
-        .features {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 2rem;
-        }
-
-        .features h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, #8a2be2, #ff1493);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: rgba(138, 43, 226, 0.05);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            padding: 30px;
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-
+        
         .feature-card:hover {
-            border-color: rgba(138, 43, 226, 0.6);
-            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
             transform: translateY(-5px);
+            transition: transform 0.3s ease;
         }
-
-        .feature-card h3 {
-            color: #8a2be2;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+        
+        .price-card:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
         }
-
-        .feature-card p {
-            color: #b0b0b0;
-            font-size: 0.95rem;
+        
+        .instagram-gradient {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
         }
-
-        /* Modes Section */
-        .modes {
-            background: rgba(138, 43, 226, 0.05);
-            padding: 80px 2rem;
-            margin: 80px 0;
-            border-top: 1px solid rgba(138, 43, 226, 0.2);
-            border-bottom: 1px solid rgba(138, 43, 226, 0.2);
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .modes .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.6s ease forwards;
         }
-
-        .modes h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 50px;
-            background: linear-gradient(135deg, #8a2be2, #ff1493);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        
+        .payment-method {
+            transition: all 0.3s ease;
         }
-
-        .modes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .mode-box {
-            background: rgba(15, 20, 40, 0.8);
-            border: 2px solid rgba(138, 43, 226, 0.3);
-            padding: 25px;
-            border-radius: 8px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .mode-box:hover {
-            border-color: #8a2be2;
-            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
-        }
-
-        .mode-box h3 {
-            color: #8a2be2;
-            margin-bottom: 0.5rem;
-        }
-
-        .mode-box p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-        }
-
-        /* Download Section */
-        .download {
-            max-width: 1200px;
-            margin: 80px auto;
-            padding: 0 2rem;
-            text-align: center;
-        }
-
-        .download h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #8a2be2, #ff1493);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .download-box {
-            background: rgba(138, 43, 226, 0.1);
-            border: 2px solid rgba(138, 43, 226, 0.3);
-            padding: 40px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .download-box p {
-            color: #b0b0b0;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .download-button {
-            background: linear-gradient(135deg, #00ff00, #00cc00);
-            color: #000;
-            padding: 18px 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
-        }
-
-        .download-button:hover {
+        
+        .payment-method:hover {
             transform: translateY(-3px);
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.6);
-        }
-
-        .specs {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .spec-item {
-            background: rgba(15, 20, 40, 0.8);
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #8a2be2;
-        }
-
-        .spec-item h4 {
-            color: #8a2be2;
-            margin-bottom: 0.5rem;
-        }
-
-        .spec-item p {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            background: rgba(15, 20, 40, 0.95);
-            border-top: 1px solid rgba(138, 43, 226, 0.2);
-            padding: 40px 2rem;
-            text-align: center;
-            color: #b0b0b0;
-            margin-top: 80px;
-        }
-
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        footer a {
-            color: #8a2be2;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: #ff1493;
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav .container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav a {
-                margin: 0.5rem 1rem;
-            }
-
-            .hero {
-                padding: 100px 2rem 50px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">⚡ CHAOS LAUNCHER</div>
-            <div>
-                <a href="#features">Features</a>
-                <a href="#modes">Modes</a>
-                <a href="#download">Download</a>
+<body class="min-h-screen bg-gray-50 text-gray-800 font-cairo">
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-tachometer-alt text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-blue-600">Optimize PC</h1>
+                        <p class="text-xs text-gray-500">تحسين أداء الكمبيوتر</p>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8 space-x-reverse">
+                    <a href="#home" class="text-blue-600 font-medium hover:text-blue-800 transition">الرئيسية</a>
+                    <a href="#features" class="text-gray-600 hover:text-blue-600 transition">المميزات</a>
+                    <a href="#pricing" class="text-gray-600 hover:text-blue-600 transition">الأسعار</a>
+                    <a href="#payment" class="text-gray-600 hover:text-blue-600 transition">طرق الدفع</a>
+                    <a href="#feedback" class="text-gray-600 hover:text-blue-600 transition">الفيدباك</a>
+                    <a href="#download" class="text-gray-600 hover:text-blue-600 transition">التنزيل</a>
+                </div>
+                
+                <!-- Download Button -->
+                <a href="#download" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition font-medium">
+                    <i class="fas fa-download ml-2"></i>
+                    تنزيل الآن
+                </a>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
             </div>
-        </div>
-    </nav>
+            
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-4">
+                <a href="#home" class="block text-blue-600 font-medium">الرئيسية</a>
+                <a href="#features" class="block text-gray-600">المميزات</a>
+                <a href="#pricing" class="block text-gray-600">الأسعار</a>
+                <a href="#payment" class="block text-gray-600">طرق الدفع</a>
+                <a href="#feedback" class="block text-gray-600">الفيدباك</a>
+                <a href="#download" class="block text-gray-600">التنزيل</a>
+            </div>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>CHAOS LAUNCHER</h1>
-        <p>Professional Gaming Optimizer for Windows</p>
-        <p style="font-size: 1rem; color: #888;">Boost your gaming performance with one click</p>
-        <button class="cta-button" onclick="document.getElementById('download').scrollIntoView({behavior: 'smooth'})">
-            Download Now
-        </button>
+    <section id="home" class="hero-gradient text-white">
+        <div class="container mx-auto px-4 py-20">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">حول جهازك إلى آلة ألعاب قوية</h2>
+                    <p class="text-xl mb-8 opacity-90">
+                        تطبيق Optimize PC يحسن أداء جهاز الكمبيوتر، يخفف نظام الويندوز للأجهزة الضعيفة، ويركز على تحسين تجربة الألعاب وجعلها أكثر سلاسة
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#download" class="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-gray-100 transition font-bold text-lg">
+                            <i class="fas fa-download ml-2"></i>
+                            تنزيل مجاني
+                        </a>
+                        <a href="#pricing" class="border-2 border-white text-white px-8 py-3 rounded-lg hover:bg-white hover:text-blue-600 transition font-bold text-lg">
+                            <i class="fas fa-crown ml-2"></i>
+                            النسخة المدفوعة
+                        </a>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-80 h-80 bg-white/10 rounded-3xl backdrop-blur-sm flex items-center justify-center">
+                            <i class="fas fa-gamepad text-9xl opacity-50"></i>
+                        </div>
+                        <div class="absolute -top-4 -right-4 w-40 h-40 bg-yellow-400 rounded-2xl flex items-center justify-center">
+                            <span class="text-3xl font-bold text-gray-800">+60%</span>
+                        </div>
+                        <div class="absolute -bottom-4 -left-4 w-40 h-40 bg-green-400 rounded-2xl flex items-center justify-center">
+                            <span class="text-3xl font-bold text-gray-800">-40%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features" id="features">
-        <h2>Why Choose Chaos Launcher?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>⚡ Ultimate Performance</h3>
-                <p>Activate Ultimate Performance Power Plan for maximum FPS and responsiveness</p>
-            </div>
-            <div class="feature-card">
-                <h3>🧹 Auto Cleanup</h3>
-                <p>Automatically clean TEMP, Prefetch, and temporary files before gaming</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔧 Smart Service Management</h3>
-                <p>Intelligently disable unnecessary services and restore them automatically</p>
-            </div>
-            <div class="feature-card">
-                <h3>📊 Real-time Monitoring</h3>
-                <p>Monitor CPU, RAM, and GPU usage in real-time with live graphs</p>
-            </div>
-            <div class="feature-card">
-                <h3>🎮 Auto-Restore</h3>
-                <p>Automatically restore system settings when you close your game</p>
-            </div>
-            <div class="feature-card">
-                <h3>🎨 Professional UI</h3>
-                <p>Beautiful cosmic purple theme with intuitive controls</p>
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">مميزات تطبيق Optimize PC</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+                تطبيق متكامل لتحسين أداء جهاز الكمبيوتر مع تركيز خاص على تحسين تجربة الألعاب
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">تحسين أداء النظام</h3>
+                    <p class="text-gray-600">
+                        تحسين شامل لنظام الويندوز يزيد من سرعة الاستجابة ويقلل من وقت التحميل
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-gamepad text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">تحسين تجربة الألعاب</h3>
+                    <p class="text-gray-600">
+                        تحسين إعدادات الألعاب وتخصيص موارد النظام لتحقيق أفضل أداء أثناء اللعب
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-weight text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">تخفيف نظام الويندوز</h3>
+                    <p class="text-gray-600">
+                        إزالة الملفات غير الضرورية وتعطيل الخدمات الزائدة لتخفيف الحمل على الأجهزة الضعيفة
+                    </p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-memory text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">إدارة الذاكرة</h3>
+                    <p class="text-gray-600">
+                        تحسين استخدام الذاكرة العشوائية وتنظيفها تلقائياً لزيادة الأداء
+                    </p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-microchip text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">تحسين المعالج</h3>
+                    <p class="text-gray-600">
+                        تحسين إعدادات المعالج وتوزيع المهام لتحقيق أقصى استفادة من قدراته
+                    </p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="feature-card bg-gray-50 p-8 rounded-2xl shadow-lg border border-gray-100">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-gray-800">وضع الألعاب الآمن</h3>
+                    <p class="text-gray-600">
+                        وضع خاص للألعاب يعطل التحديثات والإشعارات لضمان تجربة لعب دون انقطاع
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Modes Section -->
-    <section class="modes" id="modes">
-        <div class="container">
-            <h2>Optimization Modes</h2>
-            <div class="modes-grid">
-                <div class="mode-box">
-                    <h3>⚡ Competitive</h3>
-                    <p>Maximum FPS for competitive games like CS2, Valorant</p>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">اختر النسخة المناسبة لك</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+                نسخة مجانية مع مميزات أساسية، ونسخة مدفوعة محسنة بشكل أكبر مع مميزات متقدمة
+            </p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Free Version -->
+                <div class="price-card bg-white p-8 rounded-3xl shadow-xl border-2 border-blue-100">
+                    <div class="text-center mb-8">
+                        <div class="inline-block px-6 py-2 bg-blue-100 text-blue-600 rounded-full font-bold mb-4">
+                            <i class="fas fa-download ml-2"></i>
+                            النسخة المجانية
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">مجاني تماماً</h3>
+                        <p class="text-gray-600">مناسبة للمستخدمين العاديين</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 ml-3"></i>
+                            <span>تحسين أداء النظام الأساسي</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 ml-3"></i>
+                            <span>تنظيف الملفات المؤقتة</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 ml-3"></i>
+                            <span>تحسين إعدادات الألعاب الأساسية</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 ml-3"></i>
+                            <span>إدارة الذاكرة العشوائية</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-green-500 ml-3"></i>
+                            <span>تخفيف نظام الويندوز الأساسي</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-times text-red-500 ml-3"></i>
+                            <span class="text-gray-400">وضع الألعاب المتقدم</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-times text-red-500 ml-3"></i>
+                            <span class="text-gray-400">تحسين المعالج المتقدم</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-times text-red-500 ml-3"></i>
+                            <span class="text-gray-400">دعم فني مخصص</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#download" class="block w-full bg-blue-600 text-white text-center py-3 rounded-lg hover:bg-blue-700 transition font-bold">
+                        <i class="fas fa-download ml-2"></i>
+                        تنزيل النسخة المجانية
+                    </a>
                 </div>
-                <div class="mode-box">
-                    <h3>🎨 Graphics</h3>
-                    <p>Balance performance and visuals for AAA games</p>
+                
+                <!-- Pro Version -->
+                <div class="price-card bg-gradient-to-br from-blue-600 to-blue-800 p-8 rounded-3xl shadow-xl relative">
+                    <div class="absolute -top-4 right-1/2 transform translate-x-1/2 bg-yellow-400 text-gray-800 px-6 py-2 rounded-full font-bold">
+                        <i class="fas fa-crown ml-2"></i>
+                        الأكثر طلباً
+                    </div>
+                    
+                    <div class="text-center mb-8 text-white">
+                        <h3 class="text-2xl font-bold mb-2">النسخة المدفوعة</h3>
+                        <div class="text-4xl font-bold mb-2">$29.99</div>
+                        <p class="opacity-90">مدى الحياة - تحديثات مجانية</p>
+                    </div>
+                    
+                    <div class="space-y-4 mb-8 text-white">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-yellow-400 ml-3"></i>
+                            <span>كل مميزات النسخة المجانية</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-yellow-400 ml-3"></i>
+                            <span>وضع الألعاب المتقدم (Game Mode Pro)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-yellow-400 ml-3"></i>
+                            <span>تحسين المعالج المتقدم (CPU Boost)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-yellow-400 ml-3"></i>
+                            <span>تحسين كارت الشاشة (GPU Optimization)</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-yellow-400 ml-3"></i>
+                            <span>إعدادات مخصصة لكل لعبة</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-yellow-400 ml-3"></i>
+                            <span>مراقبة الأداء في الوقت الحقيقي</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-yellow-400 ml-3"></i>
+                            <span>دعم فني مخصص 24/7</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-yellow-400 ml-3"></i>
+                            <span>تحديثات دورية ومميزات جديدة</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#payment" class="block w-full bg-white text-blue-600 text-center py-3 rounded-lg hover:bg-gray-100 transition font-bold">
+                        <i class="fas fa-shopping-cart ml-2"></i>
+                        شراء النسخة المدفوعة
+                    </a>
                 </div>
-                <div class="mode-box">
-                    <h3>⚖️ Balanced</h3>
-                    <p>Safe general optimization for all games</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods Section -->
+    <section id="payment" class="py-20 payment-gradient">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-800">طرق الدفع المتاحة</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+                نوفر لك多种 طرق دفع آمنة وسهلة لشراء النسخة المدفوعة من Optimize PC
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <!-- Visa -->
+                <div class="payment-method bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
+                    <div class="w-20 h-20 bg-visa rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fab fa-cc-visa text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">فيزا / Visa</h3>
+                    <p class="text-gray-600 mb-6">بطاقات فيزا للدفع الآمن</p>
+                    <div class="bg-gray-100 rounded-lg p-3">
+                        <p class="text-sm text-gray-700">مدعومة عالمياً</p>
+                    </div>
                 </div>
-                <div class="mode-box">
-                    <h3>🌐 Network</h3>
-                    <p>Reduce ping and optimize network performance</p>
+                
+                <!-- PayPal -->
+                <div class="payment-method bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
+                    <div class="w-20 h-20 bg-paypal rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fab fa-cc-paypal text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">باي بال / PayPal</h3>
+                    <p class="text-gray-600 mb-6">الحسابات الشخصية والتجارية</p>
+                    <div class="bg-gray-100 rounded-lg p-3">
+                        <p class="text-sm text-gray-700">حماية المشتري متاحة</p>
+                    </div>
                 </div>
-                <div class="mode-box">
-                    <h3>🎨 Color Boost</h3>
-                    <p>Enhance colors and saturation like NVIDIA Digital Vibrance</p>
+                
+                <!-- MasterCard -->
+                <div class="payment-method bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
+                    <div class="w-20 h-20 bg-mastercard rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fab fa-cc-mastercard text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">ماستركارد</h3>
+                    <p class="text-gray-600 mb-6">بطاقات ماستركارد للدفع</p>
+                    <div class="bg-gray-100 rounded-lg p-3">
+                        <p class="text-sm text-gray-700">مدعومة عالمياً</p>
+                    </div>
+                </div>
+                
+                <!-- Dinarak -->
+                <div class="payment-method bg-white p-8 rounded-2xl shadow-lg border border-gray-200 text-center">
+                    <div class="w-20 h-20 bg-dinar rounded-xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-wallet text-white text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-gray-800">دينارك</h3>
+                    <p class="text-gray-600 mb-6">محفظة دينارك الإلكترونية</p>
+                    <div class="bg-gray-100 rounded-lg p-3">
+                        <p class="text-sm text-gray-700">خاص بالدول العربية</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Payment Process -->
+            <div class="mt-16 max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-center mb-8 text-gray-800">كيفية الشراء والدفع</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-blue-600">1</span>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-gray-800">اختر النسخة المدفوعة</h4>
+                        <p class="text-gray-600">اضغط على زر "شراء النسخة المدفوعة"</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-blue-600">2</span>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-gray-800">اختر طريقة الدفع</h4>
+                        <p class="text-gray-600">اختر طريقة الدفع المناسبة لك</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-2xl font-bold text-blue-600">3</span>
+                        </div>
+                        <h4 class="font-bold text-lg mb-2 text-gray-800">استلم الرخصة</h4>
+                        <p class="text-gray-600">ستصلك الرخصة على بريدك الإلكتروني فوراً</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <button id="startPayment" class="bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-3 rounded-lg hover:opacity-90 transition font-bold text-lg">
+                        <i class="fas fa-shopping-cart ml-2"></i>
+                        ابدأ عملية الشراء الآن
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">تواصل معنا عبر الإنستجرام</h2>
+                    <p class="text-gray-600 text-lg">تابعنا على الإنستجرام للفيدباك والأخبار والتحديثات</p>
+                </div>
+                
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-3xl p-8 md:p-12">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/3 mb-8 md:mb-0">
+                            <div class="instagram-gradient w-48 h-48 rounded-full flex items-center justify-center mx-auto">
+                                <i class="fab fa-instagram text-white text-7xl"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="md:w-2/3 md:pr-8">
+                            <h3 class="text-2xl font-bold mb-6 text-gray-800">حساب الإنستجرام الرسمي</h3>
+                            <div class="bg-white rounded-xl p-6 mb-6 shadow-md">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center ml-3">
+                                        <i class="fab fa-instagram text-white text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-lg">j_w7y</h4>
+                                        <p class="text-gray-600 text-sm">الحساب الرسمي للفيدباك</p>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">
+                                    تابعنا على الإنستجرام للحصول على:
+                                </p>
+                                <ul class="space-y-2 text-gray-600">
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-500 ml-3"></i>
+                                        <span>أحدث التحديثات والمميزات الجديدة</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-500 ml-3"></i>
+                                        <span>نصائح لتحسين أداء جهازك</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-500 ml-3"></i>
+                                        <span>عروض حصرية للمتابعين</span>
+                                    </li>
+                                    <li class="flex items-center">
+                                        <i class="fas fa-check text-green-500 ml-3"></i>
+                                        <span>دعم فني مباشر عبر الرسائل</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a href="https://instagram.com/j_w7y" target="_blank" class="instagram-gradient text-white px-6 py-3 rounded-lg hover:opacity-90 transition font-bold text-center">
+                                    <i class="fab fa-instagram ml-2"></i>
+                                    تابعنا على الإنستجرام
+                                </a>
+                                <a href="https://instagram.com/direct/t/j_w7y" target="_blank" class="bg-gray-800 text-white px-6 py-3 rounded-lg hover:bg-gray-900 transition font-bold text-center">
+                                    <i class="fas fa-envelope ml-2"></i>
+                                    أرسل رسالة مباشرة
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonials -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold text-center mb-8 text-gray-800">آراء المستخدمين</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                            <div class="flex items-center mb-4">
+                                <img src="https://picsum.photos/50?random=1" alt="User" class="w-12 h-12 rounded-full ml-3">
+                                <div>
+                                    <h4 class="font-bold">أحمد محمد</h4>
+                                    <p class="text-gray-500 text-sm">@ahmed_gamer</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">"التطبيق غير تجربة اللعب تماماً! زادت سرعة الجهاز بنسبة ملحوظة"</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                            <div class="flex items-center mb-4">
+                                <img src="https://picsum.photos/50?random=2" alt="User" class="w-12 h-12 rounded-full ml-3">
+                                <div>
+                                    <h4 class="font-bold">سارة خالد</h4>
+                                    <p class="text-gray-500 text-sm">@sara_tech</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">"الدعم الفني ممتاز والنسخة المدفوعة تستحق كل قرش"</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-xl border border-gray-200">
+                            <div class="flex items-center mb-4">
+                                <img src="https://picsum.photos/50?random=3" alt="User" class="w-12 h-12 rounded-full ml-3">
+                                <div>
+                                    <h4 class="font-bold">علي حسين</h4>
+                                    <p class="text-gray-500 text-sm">@ali_pc</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700">"بعد استخدام التطبيق، اختفت مشاكل التقطيع في الألعاب نهائياً"</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Download Section -->
-    <section class="download" id="download">
-        <h2>Ready to Boost Your Gaming?</h2>
-        <div class="download-box">
-            <p>Download Chaos Launcher and experience the ultimate gaming performance</p>
-            <button class="download-button" onclick="downloadEXE()">
-                📥 Download ChaosLauncher.exe
-            </button>
-            <p style="font-size: 0.9rem; margin-top: 20px; color: #888;">
-                Version 1.0.0 | Windows 10/11 64-bit | ~150MB
-            </p>
+    <section id="download" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-800">قم بتنزيل Optimize PC الآن</h2>
+                <p class="text-gray-600 text-center mb-8">
+                    انضم إلى أكثر من 500,000 مستخدم حول العالم يستفيدون من تطبيقنا لتحسين أداء أجهزتهم
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white p-6 rounded-2xl shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center ml-3">
+                                <i class="fas fa-download text-blue-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">النسخة المجانية</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">تحميل مباشر - لا يتطلب تسجيل</p>
+                        <button class="download-btn w-full bg-blue-600 text-white text-center py-3 rounded-lg hover:bg-blue-700 transition font-bold" data-version="free">
+                            <i class="fas fa-download ml-2"></i>
+                            تنزيل (حجم: 45 MB)
+                        </button>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-md">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center ml-3">
+                                <i class="fas fa-crown text-yellow-600 text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-800">النسخة المدفوعة</h3>
+                        </div>
+                        <p class="text-gray-600 mb-6">شراء آمن - ترخيص مدى الحياة</p>
+                        <button class="download-btn w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-center py-3 rounded-lg hover:opacity-90 transition font-bold" data-version="pro">
+                            <i class="fas fa-shopping-cart ml-2"></i>
+                            شراء الآن ($29.99)
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="text-center text-gray-600">
+                    <p class="mb-2"><i class="fas fa-check text-green-500 ml-2"></i> متوافق مع Windows 10 و Windows 11</p>
+                    <p><i class="fas fa-check text-green-500 ml-2"></i> لا يتطلب مواصفات عالية - يعمل على جميع الأجهزة</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <h3 style="color: #8a2be2; margin-top: 50px; margin-bottom: 30px;">System Requirements</h3>
-        <div class="specs">
-            <div class="spec-item">
-                <h4>✓ OS</h4>
-                <p>Windows 10 or 11 (64-bit)</p>
+    <!-- About & Copyright Section -->
+    <section id="about" class="py-12 bg-gray-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 space-x-reverse mb-4">
+                        <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-tachometer-alt text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Optimize PC</h3>
+                    </div>
+                    <p class="text-gray-300 max-w-md">
+                        تطبيق متخصص في تحسين أداء أجهزة الكمبيوتر وتجربة الألعاب. نساعد المستخدمين على تحقيق أقصى استفادة من أجهزتهم.
+                    </p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <h4 class="text-lg font-bold mb-4">حقوق الموقع</h4>
+                    <p class="text-gray-300">© 2024 جميع الحقوق محفوظة</p>
+                    <p class="text-blue-300 font-medium mt-2">جهاد محمود راغب القيسي</p>
+                    <div class="flex justify-center md:justify-end space-x-4 space-x-reverse mt-4">
+                        <a href="https://instagram.com/j_w7y" target="_blank" class="text-gray-300 hover:text-pink-400"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-blue-600"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-300 hover:text-red-500"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="spec-item">
-                <h4>✓ Memory</h4>
-                <p>2GB RAM minimum</p>
-            </div>
-            <div class="spec-item">
-                <h4>✓ Storage</h4>
-                <p>200MB free space</p>
-            </div>
-            <div class="spec-item">
-                <h4>✓ Admin Rights</h4>
-                <p>Required for optimization</p>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>تم تطوير هذا الموقع وتطبيق Optimize PC بواسطة <span class="text-blue-300">جهاد محمود راغب القيسي</span></p>
+                <p class="mt-2">للاستفسارات والدعم الفني: support@optimizepc.com | +123 456 7890</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p><strong>CHAOS LAUNCHER</strong> - Professional Gaming Optimizer</p>
-        <p>Version 1.0.0 | Built with C# WPF</p>
-        <p>© 2026 All Rights Reserved</p>
-        <p style="margin-top: 20px;">
-            <a href="#features">Features</a> | 
-            <a href="#modes">Modes</a> | 
-            <a href="#download">Download</a>
-        </p>
+    <footer class="bg-gray-900 text-gray-400 py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>Optimize PC v2.5.1 | آخر تحديث: ديسمبر 2024</p>
+                </div>
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#" class="hover:text-white transition">سياسة الخصوصية</a>
+                    <a href="#" class="hover:text-white transition">شروط الاستخدام</a>
+                    <a href="#" class="hover:text-white transition">اتصل بنا</a>
+                    <a href="#" class="hover:text-white transition">الدعم الفني</a>
+                </div>
+            </div>
+        </div>
     </footer>
+    
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">شراء النسخة المدفوعة</h3>
+                <button id="closePaymentModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="paymentContent" class="mb-6">
+                <div class="bg-blue-50 rounded-xl p-4 mb-4">
+                    <p class="font-bold text-blue-800">المنتج: Optimize Pro</p>
+                    <p class="text-blue-700">السعر: $29.99 (ترخيص مدى الحياة)</p>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="font-bold mb-3 text-gray-800">اختر طريقة الدفع:</h4>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="paymentMethod" value="visa" class="ml-3" checked>
+                            <div class="flex items-center">
+                                <div class="w-10 h-7 bg-visa rounded flex items-center justify-center ml-3">
+                                    <i class="fab fa-cc-visa text-white"></i>
+                                </div>
+                                <span>بطاقة فيزا / Visa</span>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="paymentMethod" value="paypal" class="ml-3">
+                            <div class="flex items-center">
+                                <div class="w-10 h-7 bg-paypal rounded flex items-center justify-center ml-3">
+                                    <i class="fab fa-cc-paypal text-white"></i>
+                                </div>
+                                <span>باي بال / PayPal</span>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="paymentMethod" value="mastercard" class="ml-3">
+                            <div class="flex items-center">
+                                <div class="w-10 h-7 bg-mastercard rounded flex items-center justify-center ml-3">
+                                    <i class="fab fa-cc-mastercard text-white"></i>
+                                </div>
+                                <span>ماستركارد / MasterCard</span>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="paymentMethod" value="dinarak" class="ml-3">
+                            <div class="flex items-center">
+                                <div class="w-10 h-7 bg-dinar rounded flex items-center justify-center ml-3">
+                                    <i class="fas fa-wallet text-white"></i>
+                                </div>
+                                <span>دينارك / Dinarak</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                    <p class="text-yellow-800 text-sm">
+                        <i class="fas fa-shield-alt ml-2"></i>
+                        عملية الدفع آمنة ومشفرة. لن نخزن أي بيانات دفع على خوادمنا.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="flex space-x-3 space-x-reverse">
+                <button id="confirmPayment" class="flex-1 bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition font-bold">
+                    <i class="fas fa-lock ml-2"></i>
+                    تأكيد الدفع
+                </button>
+                <button id="cancelPayment" class="flex-1 bg-gray-300 text-gray-800 py-3 rounded-lg hover:bg-gray-400 transition font-bold">
+                    إلغاء
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Download Modal -->
+    <div id="downloadModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-800">جاري التحميل</h3>
+                <button id="closeDownloadModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div id="downloadContent" class="text-center mb-6">
+                <!-- Content will be filled by JavaScript -->
+            </div>
+            
+            <div class="mb-6">
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div id="progressBar" class="bg-blue-600 h-2 rounded-full w-0 transition-all duration-300"></div>
+                </div>
+                <p id="progressText" class="text-center mt-2 text-gray-600">جاري إعداد التحميل...</p>
+            </div>
+            
+            <button id="cancelDownload" class="w-full bg-gray-300 text-gray-800 py-3 rounded-lg hover:bg-gray-400 transition font-bold">
+                إلغاء التحميل
+            </button>
+        </div>
+    </div>
 
     <script>
-        function downloadEXE() {
-            // Create a simple download link
-            const link = document.createElement('a');
-            link.href = 'ChaosLauncher.exe';
-            link.download = 'ChaosLauncher.exe';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            
-            // Show alert
-            alert('Download started! If it doesn\'t start, please check your Downloads folder.');
-        }
-
-        // Smooth scroll for navigation links
+        // Define data at the beginning
+        const downloadData = {
+            "free": {
+                "title": "النسخة المجانية من Optimize PC",
+                "description": "جاري تحميل النسخة المجانية من التطبيق. حجم الملف: 45 ميجابايت",
+                "fileSize": "45 MB",
+                "fileName": "OptimizePC_Free_v2.5.1.exe",
+                "fakeUrl": "https://download.optimizepc.com/free/latest"
+            },
+            "pro": {
+                "title": "شراء النسخة المدفوعة",
+                "description": "سيتم توجيهك إلى صفحة الدفع الآمن لشراء النسخة المدفوعة من Optimize PC",
+                "fileSize": "65 MB",
+                "fileName": "OptimizePC_Pro_v2.5.1.exe",
+                "fakeUrl": "https://checkout.optimizepc.com/pro"
+            }
+        };
+        
+        const paymentMethods = {
+            "visa": { "name": "بطاقة فيزا", "icon": "fa-cc-visa", "color": "bg-visa" },
+            "paypal": { "name": "باي بال", "icon": "fa-cc-paypal", "color": "bg-paypal" },
+            "mastercard": { "name": "ماستركارد", "icon": "fa-cc-mastercard", "color": "bg-mastercard" },
+            "dinarak": { "name": "دينارك", "icon": "fa-wallet", "color": "bg-dinar" }
+        };
+        
+        // Mobile menu functionality
+        const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        
+        mobileMenuBtn.addEventListener("click", function() {
+            mobileMenu.classList.toggle("hidden");
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", function(event) {
+            if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add("hidden");
+            }
+        });
+        
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener("click", function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
+                
+                const targetId = this.getAttribute("href");
+                if (targetId === "#") return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    mobileMenu.classList.add("hidden");
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: "smooth"
                     });
+                }
+            });
+        });
+        
+        // Payment functionality
+        const startPaymentBtn = document.getElementById("startPayment");
+        const paymentModal = document.getElementById("paymentModal");
+        const closePaymentModal = document.getElementById("closePaymentModal");
+        const cancelPaymentBtn = document.getElementById("cancelPayment");
+        const confirmPaymentBtn = document.getElementById("confirmPayment");
+        
+        startPaymentBtn.addEventListener("click", function() {
+            paymentModal.classList.remove("hidden");
+            paymentModal.classList.add("flex");
+        });
+        
+        closePaymentModal.addEventListener("click", function() {
+            paymentModal.classList.add("hidden");
+            paymentModal.classList.remove("flex");
+        });
+        
+        cancelPaymentBtn.addEventListener("click", function() {
+            paymentModal.classList.add("hidden");
+            paymentModal.classList.remove("flex");
+        });
+        
+        confirmPaymentBtn.addEventListener("click", function() {
+            const selectedMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            const methodInfo = paymentMethods[selectedMethod];
+            
+            // Show processing message
+            const paymentContent = document.getElementById("paymentContent");
+            paymentContent.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="w-20 h-20 ${methodInfo.color} rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas ${methodInfo.icon} text-white text-3xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 text-gray-800">جاري معالجة الدفع عبر ${methodInfo.name}</h4>
+                    <p class="text-gray-600 mb-6">يرجى الانتظار، جاري التحقق من معلومات الدفع...</p>
+                    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                </div>
+            `;
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                paymentContent.innerHTML = `
+                    <div class="text-center py-8">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-check text-green-600 text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4 text-gray-800">تمت عملية الدفع بنجاح!</h4>
+                        <p class="text-gray-600 mb-6">شكراً لشرائك Optimize Pro. سيتم إرسال الرخصة إلى بريدك الإلكتروني خلال دقائق.</p>
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                            <p class="text-green-800 font-bold">رقم الرخصة: OPT-PRO-${Date.now().toString().slice(-8)}</p>
+                            <p class="text-green-700 text-sm mt-2">احفظ هذا الرقم للتفعيل</p>
+                        </div>
+                    </div>
+                `;
+                
+                confirmPaymentBtn.textContent = "تم";
+                confirmPaymentBtn.disabled = true;
+                confirmPaymentBtn.classList.remove("bg-green-600", "hover:bg-green-700");
+                confirmPaymentBtn.classList.add("bg-green-500");
+                
+                setTimeout(() => {
+                    paymentModal.classList.add("hidden");
+                    paymentModal.classList.remove("flex");
+                    // Reset modal for next time
+                    resetPaymentModal();
+                }, 5000);
+            }, 3000);
+        });
+        
+        function resetPaymentModal() {
+            const paymentContent = document.getElementById("paymentContent");
+            paymentContent.innerHTML = `
+                <div class="bg-blue-50 rounded-xl p-4 mb-4">
+                    <p class="font-bold text-blue-800">المنتج: Optimize Pro</p>
+                    <p class="text-blue-700">السعر: $29.99 (ترخيص مدى الحياة)</p>
+                </div>
+                
+                <div class="mb-6">
+                    <h4 class="font-bold mb-3 text-gray-800">اختر طريقة الدفع:</h4>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="paymentMethod" value="visa" class="ml-3" checked>
+                            <div class="flex items-center">
+                                <div class="w-10 h-7 bg-visa rounded flex items-center justify-center ml-3">
+                                    <i class="fab fa-cc-visa text-white"></i>
+                                </div>
+                                <span>بطاقة فيزا / Visa</span>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="paymentMethod" value="paypal" class="ml-3">
+                            <div class="flex items-center">
+                                <div class="w-10 h-7 bg-paypal rounded flex items-center justify-center ml-3">
+                                    <i class="fab fa-cc-paypal text-white"></i>
+                                </div>
+                                <span>باي بال / PayPal</span>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="paymentMethod" value="mastercard" class="ml-3">
+                            <div class="flex items-center">
+                                <div class="w-10 h-7 bg-mastercard rounded flex items-center justify-center ml-3">
+                                    <i class="fab fa-cc-mastercard text-white"></i>
+                                </div>
+                                <span>ماستركارد / MasterCard</span>
+                            </div>
+                        </label>
+                        
+                        <label class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-gray-50">
+                            <input type="radio" name="paymentMethod" value="dinarak" class="ml-3">
+                            <div class="flex items-center">
+                                <div class="w-10 h-7 bg-dinar rounded flex items-center justify-center ml-3">
+                                    <i class="fas fa-wallet text-white"></i>
+                                </div>
+                                <span>دينارك / Dinarak</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
+                    <p class="text-yellow-800 text-sm">
+                        <i class="fas fa-shield-alt ml-2"></i>
+                        عملية الدفع آمنة ومشفرة. لن نخزن أي بيانات دفع على خوادمنا.
+                    </p>
+                </div>
+            `;
+            
+            confirmPaymentBtn.textContent = "تأكيد الدفع";
+            confirmPaymentBtn.disabled = false;
+            confirmPaymentBtn.classList.remove("bg-green-500");
+            confirmPaymentBtn.classList.add("bg-green-600", "hover:bg-green-700");
+        }
+        
+        // Close payment modal when clicking outside
+        paymentModal.addEventListener("click", function(e) {
+            if (e.target === paymentModal) {
+                paymentModal.classList.add("hidden");
+                paymentModal.classList.remove("flex");
+                resetPaymentModal();
+            }
+        });
+        
+        // Download functionality
+        const downloadButtons = document.querySelectorAll(".download-btn");
+        const downloadModal = document.getElementById("downloadModal");
+        const closeDownloadModal = document.getElementById("closeDownloadModal");
+        const cancelDownloadBtn = document.getElementById("cancelDownload");
+        const downloadContent = document.getElementById("downloadContent");
+        const progressBar = document.getElementById("progressBar");
+        const progressText = document.getElementById("progressText");
+        
+        downloadButtons.forEach(button => {
+            button.addEventListener("click", function() {
+                const version = this.getAttribute("data-version");
+                const data = downloadData[version];
+                
+                if (version === "pro") {
+                    // For pro version, open payment modal instead
+                    paymentModal.classList.remove("hidden");
+                    paymentModal.classList.add("flex");
+                    return;
+                }
+                
+                // Update modal content for free version
+                downloadContent.innerHTML = `
+                    <div class="mb-6">
+                        <div class="w-20 h-20 mx-auto mb-4 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-download text-blue-600 text-3xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-gray-800 mb-2">${data.title}</h4>
+                        <p class="text-gray-600">${data.description}</p>
+                    </div>
+                `;
+                
+                // Show modal
+                downloadModal.classList.remove("hidden");
+                downloadModal.classList.add("flex");
+                
+                // Start fake download progress
+                simulateDownload(version);
+            });
+        });
+        
+        // Close download modal
+        closeDownloadModal.addEventListener("click", function() {
+            downloadModal.classList.add("hidden");
+            downloadModal.classList.remove("flex");
+            resetDownloadProgress();
+        });
+        
+        cancelDownloadBtn.addEventListener("click", function() {
+            downloadModal.classList.add("hidden");
+            downloadModal.classList.remove("flex");
+            resetDownloadProgress();
+        });
+        
+        // Close download modal when clicking outside
+        downloadModal.addEventListener("click", function(e) {
+            if (e.target === downloadModal) {
+                downloadModal.classList.add("hidden");
+                downloadModal.classList.remove("flex");
+                resetDownloadProgress();
+            }
+        });
+        
+        // Simulate download progress
+        function simulateDownload(version) {
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress > 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    
+                    // Show completion message
+                    setTimeout(() => {
+                        progressText.textContent = "اكتمل التحميل! سيبدأ التنزيل تلقائياً";
+                        // In a real scenario, this would trigger actual download
+                        setTimeout(() => {
+                            downloadModal.classList.add("hidden");
+                            downloadModal.classList.remove("flex");
+                            resetDownloadProgress();
+                            alert("في التطبيق الحقيقي، سيبدأ تنزيل الملف الآن. هذا نموذج تجريبي.");
+                        }, 1000);
+                    }, 500);
+                }
+                
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `جاري التحميل: ${Math.round(progress)}%`;
+            }, 100);
+        }
+        
+        function resetDownloadProgress() {
+            progressBar.style.width = "0%";
+            progressText.textContent = "جاري إعداد التحميل...";
+        }
+        
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("animate-fadeIn");
+                }
+            });
+        }, observerOptions);
+        
+        // Observe feature cards, price cards, and payment methods
+        document.querySelectorAll(".feature-card, .price-card, .payment-method").forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Instagram link handler
+        document.querySelectorAll('a[href*="instagram.com"]').forEach(link => {
+            link.addEventListener("click", function(e) {
+                if (!this.getAttribute("href").startsWith("http")) {
+                    e.preventDefault();
+                    alert("في الموقع الحقيقي، سيتم فتح رابط الإنستجرام. هذا نموذج تجريبي.");
                 }
             });
         });
